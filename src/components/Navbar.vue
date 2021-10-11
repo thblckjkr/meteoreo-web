@@ -4,9 +4,8 @@
       <Logo></Logo>
    </div>
   <div>
-    <a href="/one" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">One</a>
-    <a href="/two" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Two</a>
-    <a href="/three" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Three</a>
+   <router-link to="/" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2" >Home</router-link>
+   <router-link to="/about" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">About</router-link>
   </div>
 </nav>
 </template>

@@ -1,23 +1,25 @@
 <template>
-  <div id="app">    
-    <Navbar></Navbar>
-    <Dashboard/>
+  <div id="app" class="flex">
+    <Sidebar class="flex flex-row"></Sidebar>
+    <div id="container" class="px-16 py-4 text-gray-700 h-screen w-screen">
+      <router-view>
+      </router-view>
+    </div>
   </div>
 </template>
 
 <script>
-import Dashboard from './components/Dashboard.vue'
-import Navbar from './components/Navbar.vue'
+import Sidebar from './components/Sidebar.vue'
 
 export default {
-  name: 'App',
   components: {
-    Dashboard,
-    Navbar
+    Sidebar
   }
 }
 </script>
 
 <style>
-
+#container{
+  background-color: #E5E5E5;
+}
 </style>

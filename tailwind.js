@@ -1,3 +1,4 @@
+const { green } = require('tailwindcss/colors')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
@@ -15,6 +16,16 @@ module.exports = {
       yellow: colors.amber,
       green: '#09AB5D',
       blue: '#16B2D4',
+      primary: {
+        light: '#2ED47A',
+        DEFAULT: '#09AB5D',
+        dark: '#056235',
+      },
+      secondary: {
+        light: '#a5e7f6',
+        DEFAULT: '#16B2D4',
+        dark: '#0a6c9f', 
+      }
     },
     extend: {
 

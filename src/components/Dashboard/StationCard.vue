@@ -19,7 +19,7 @@
       <div
         class="inline-flex m-1"
         style="min-width: 40%"
-        v-for="service in station.services"
+        v-for="service in services"
         :key="service"
       >
         <StationService
@@ -51,7 +51,11 @@ export default {
     url () {
       return `/station/${this.station.id}`;
     },
+    services () {
+      return ['network', 'driver'].concat(this.station.services);
+    },
     class_has_problems() {
+      
       return this.station.incidents.length > 0
         ? { color: "text-red-500", icon: "cross" }
         : { color: "text-green", icon: "check" };

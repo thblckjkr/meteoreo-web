@@ -2,7 +2,7 @@
    <div class="container-card incident-card mx-auto max-w-2xl mb-6 p-4 pb-10 block relative">
       <service-incident v-if="incident.type == 'service_error'" :incident="incident" />
       <generic-incident v-if="incident.type != 'service_error'" :incident="incident" />
-      <ResolveButton :incident="incident"> </ResolveButton>
+      <ResolveButton :incident="incident" v-if="actionable"> </ResolveButton>
    </div>
 
 </template>
@@ -18,6 +18,11 @@ export default {
          incident: {
             type: Object,
             required: true
+         },
+         actionable: {
+            type: Boolean,
+            required: false,
+            default: true
          }
       },
       components: {

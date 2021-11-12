@@ -26,7 +26,9 @@ var services = {
   'mysql': 'database',
   'weewx': 'cloud',
   'time': 'clock',
-  'RoPi': 'disk'
+  'RoPi': 'disk',
+  'network': 'network',
+  'driver': 'driver',
 }
 
 export default {

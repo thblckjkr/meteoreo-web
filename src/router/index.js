@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
+import Events from '../views/Events.vue'
 import Register from '../views/Register.vue'
 
 Vue.use(VueRouter)
@@ -10,6 +11,11 @@ const routes = [
     path: '/',
     name: 'Dashboard',
     component: Dashboard
+  },
+  {
+    path: '/events',
+    name: 'Events',
+    component: Events
   },
   {
     path: '/about',

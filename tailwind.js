@@ -1,10 +1,14 @@
-const { green } = require('tailwindcss/colors')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Poppins']
+      },
+    },
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
@@ -26,9 +30,6 @@ module.exports = {
         DEFAULT: '#16B2D4',
         dark: '#0a6c9f', 
       }
-    },
-    extend: {
-
     },
   },
   variants: {

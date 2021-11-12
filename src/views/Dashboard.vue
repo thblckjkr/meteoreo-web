@@ -2,7 +2,7 @@
    <div class="">
       <p class="text-2xl text-center"></p>
       <div class="flex flex-wrap">
-         <div v-for="(station, index) in stations" :key="index">
+         <div class="info-card" v-for="(station, index) in stations" :key="index">
             <StationCard :station="station"></StationCard>
          </div>
       </div>

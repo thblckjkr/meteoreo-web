@@ -23,7 +23,15 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: Register
-    
+  },
+  {
+    /**
+     * Get's the station details from the API, using the UUID from the URL
+     */
+    path: '/station/:uuid',
+    name: 'Station status',
+    component: () => import('../views/StationStatus.vue'),
+    props: true
   }
 ]
 

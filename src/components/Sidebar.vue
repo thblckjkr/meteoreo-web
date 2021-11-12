@@ -8,10 +8,10 @@
           class="rounded-full w-10 h-10 mb-3 mx-auto"
         />
       </a>
-      <div class="mt-10">
+      <div class="mt-10 mx-auto">
         <ul>
           <v-for v-for="(link, index) in links" :key="index">
-            <li class="mb-6 text-center">
+            <li class="mb-6 text-left ml-12">
               <router-link :to="link.address" class="text-blue">
                 <span class="inline-block">
                   <svg

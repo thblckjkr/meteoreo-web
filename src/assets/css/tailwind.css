@@ -1,3 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,200;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+   @font-face {
+      font-family: 'Poppins';
+   }
+}
+
+@layer components {
+   .container-card {
+      @apply bg-white mr-6 overflow-hidden shadow-md rounded-lg flex flex-col flex-1 md:flex-row;
+   }
+   .info-card {
+      @apply container-card;
+      max-width: 30%;
+   }
+
+   .outline-button {
+      @apply bg-transparent  font-semibold  border hover:border-transparent rounded py-1 px-4;
+
+   }
+   .outline-blue-button {
+      @apply outline-button hover:bg-blue text-blue border-blue hover:text-white
+   }
+   .outline-green-button {
+      @apply outline-button hover:bg-green text-green border-green hover:text-white
+   }
+
+}

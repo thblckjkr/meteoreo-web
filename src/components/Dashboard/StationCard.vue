@@ -1,6 +1,6 @@
 <template>
   <!--div class="overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-5 hover:shadow-2xl rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto" -->
-  <div class="w-full h-full relative flex">
+  <div class="w-full h-full relative flex" v-bind:class="class_has_problems['border']">
     <div
       v-bind:class="class_has_problems['color']"
       class="border-blue absolute top-3 right-3 left-auto"
@@ -57,9 +57,15 @@ export default {
     class_has_problems() {
       
       return this.station.incidents.length > 0
-        ? { color: "text-red-500", icon: "cross" }
-        : { color: "text-green", icon: "check" };
+        ? { color: "text-red-500", icon: "cross", border: "card-error"}
+        : { color: "text-green", icon: "check", border: "" };
     },
   },
 };
 </script>
+
+<style>
+.card-error {
+	border-left: 10px solid red;
+}
+</style>

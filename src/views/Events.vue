@@ -30,6 +30,9 @@ export default {
   components: {
     StationIncident,
   },
+  beforeCreate() {
+    this.$OneSignal.showSlidedownPrompt();
+  },
   created() {
     axios
       .get(process.env.VUE_APP_HOST + "/api/v1/incidents/")

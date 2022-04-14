@@ -13,7 +13,8 @@
       </div>
 
       <div class="text-sm text-gray font-light mb-4">
-        {{ station.ip_address }}
+        {{ station.ip_address }} 
+        {{ timeago }}
       </div>
 
       <div
@@ -37,6 +38,7 @@
 <script>
 import StationService from "./StationService.vue";
 import VIcon from "../Icons/VIcon.vue";
+import moment from "moment";
 
 export default {
   props: ["station"],
@@ -54,8 +56,20 @@ export default {
     services () {
       return ['network', 'driver'].concat(this.station.services);
     },
+    timeago () {
+      // Processess the incidents list and get's the oldest one
+      let incidents = this.station.incidents;
+      let oldest = this.station.incidents.reduce((oldest, incident) => {
+        if (moment(oldest.created_at).isAfter(incident.created_at)) {
+          return incident;
+        }
+        return oldest;
+      }, incidents[0]);
+
+      let time = (oldest) ? oldest.created_at : this.station.last_scan;
+      return moment.utc(time).fromNow();
+    },
     class_has_problems() {
-      
       return this.station.incidents.length > 0
         ? { color: "text-red-500", icon: "cross", border: "card-error"}
         : { color: "text-green", icon: "check", border: "" };

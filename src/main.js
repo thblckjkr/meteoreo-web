@@ -5,6 +5,9 @@ import '@/assets/css/tailwind.css'
 import OneSignal from "onesignal-vue";
 import router from './router'
 
+import Moment from 'moment' 
+Moment.locale('es')
+
 Vue.config.productionTip = false;
 
 Vue.use(OneSignal);

@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <v-icon :service="service" class="text-gray-700 mx-2"></v-icon>
-    <span class="flex-1">{{ service }}:</span>&nbsp;
-    <span class="flex-1" :class="status['text-color']">{{
+  <div class="min-w-max">
+    <v-icon :service="service" class="text-gray-700 mx-2 inline"></v-icon>
+    <span class="inline">{{ service }}:</span>&nbsp;
+    <span class="inline" :class="status['text-color']">{{
       status["text"]
     }}</span>
   </div>
@@ -28,7 +28,7 @@ export default {
           if ( this.service == "network") {
             return {
               "text-color": "text-red-500",
-              "text": "Error"
+              "text": "Err"
             };
           }
           if (this.service == "driver") {
@@ -60,7 +60,7 @@ export default {
 
         if (this.incidents[incident].path.split(".").shift() == this.service) {
           return {
-            text: "Error",
+            text: "Err",
             "text-color": "text-red-500",
             // "icon" : this.icons[this.service]
           };

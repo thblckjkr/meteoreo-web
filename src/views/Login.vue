@@ -100,6 +100,7 @@ export default {
         // router.push(this.returnUrl);
         this.$router.push(this.returnUrl).catch(() => {});
       });
+
       // .catch(error => {
       //     this.error = error;
       //     this.loading = false;

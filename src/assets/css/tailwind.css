@@ -3,6 +3,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind screens;
+
 
 @layer base {
    @font-face {
@@ -12,11 +14,7 @@
 
 @layer components {
    .container-card {
-      @apply bg-white mr-6 overflow-hidden shadow-md rounded-lg flex flex-col flex-1 md:flex-row;
-   }
-   .info-card {
-      @apply container-card;
-      max-width: 30%;
+      @apply bg-white mr-6 overflow-hidden shadow-md rounded-lg;/* flex flex-col flex-1 md:flex-row; */
    }
 
    .outline-button {

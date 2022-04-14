@@ -83,11 +83,15 @@ The form is made with Tailwind
                 id="driver"
                 name="driver"
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                v-for="driver in drivers"
-                :key="driver"
                 v-model="form.driver"
               >
-                <option :value="driver">{{ driver }}</option>
+                <option
+                  v-for="driver in drivers"
+                  :key="driver"
+                  :value="driver"
+                >
+                  {{ driver }}
+                </option>
               </select>
             </div>
             <!-- Username -->

@@ -1,6 +1,6 @@
 <template>
-  <!--div class="overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-5 hover:shadow-2xl rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto" -->
-  <div class="w-full h-full relative flex" v-bind:class="class_has_problems['border']">
+  <!-- div class="overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-5 hover:shadow-2xl rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto" -->
+  <div class="container-card relative mb-4 mr-4 shadow-lg" v-bind:class="class_has_problems['border']">
     <div
       v-bind:class="class_has_problems['color']"
       class="border-blue absolute top-3 right-3 left-auto"
@@ -19,7 +19,6 @@
 
       <div
         class="inline-flex m-1"
-        style="min-width: 40%"
         v-for="service in services"
         :key="service"
       >
@@ -29,10 +28,12 @@
         ></StationService>
       </div>
     </div>
+
     <router-link v-bind:to="url" class="outline-blue-button absolute bottom-3 right-3 left-auto" router-to="">
       Ver
     </router-link>
   </div>
+
 </template>
 
 <script>

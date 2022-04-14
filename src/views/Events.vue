@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="flex flex-1 overflow-y-auto p-4">
     <p class="text-2xl text-center"></p>
     <div class="flex flex-wrap">
       <!--div class="info-card" v-for="(event, index) in events" :key="index" -->

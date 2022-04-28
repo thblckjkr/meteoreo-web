@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
-import Events from '../views/Events.vue'
+import Journal from '../views/Journal.vue'
 import Register from '../views/Register.vue'
 import Login from '../views/Login.vue'
+import StationStatus from '../views/StationStatus.vue'
 
 Vue.use(VueRouter)
 
@@ -19,9 +20,15 @@ const routes = [
     component: Login
   },
   {
-    path: '/events',
-    name: 'Events',
-    component: Events
+    path: '/station/:uuid',
+    name: 'Station status',
+    component: StationStatus,
+    props: true
+  },
+  {
+    path: '/journal',
+    name: 'Bitácora',
+    component: Journal
   },
   {
     path: '/about',
@@ -36,15 +43,6 @@ const routes = [
     name: 'Register',
     component: Register
   },
-  {
-    /**
-     * Get's the station details from the API, using the UUID from the URL
-     */
-    path: '/station/:uuid',
-    name: 'Station status',
-    component: () => import('../views/StationStatus.vue'),
-    props: true
-  }
 ]
 
 const router = new VueRouter({

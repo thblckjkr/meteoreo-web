@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="p-8">
     <div class="container-card mx-auto max-w-5xl mb-6 p-4 block relative">
       <div class="text-green text-xl mb-2">
         <h1>
@@ -43,9 +43,23 @@
         v-for="incident in station.incidents"
         :key="incident"
       >
-        <StationIncident :incident="incident"></StationIncident>
+        <DetailedIncident :incident="incident"></DetailedIncident>
       </div>
     </div>
+
+    <!-- <div v-if="station.solved_incidents.length > 0">
+      <p class="text-center text-primary text-xl mb-3">Incidentes</p>
+
+      <div
+        class="inline-flex m-1"
+        style="min-width: 10%"
+        v-for="incident in station.incidents"
+        :key="incident"
+      >
+        <StationIncident :incident="incident"></StationIncident>
+      </div>
+    </div> -->
+
   </div>
 </template>
 
@@ -62,7 +76,7 @@
 import axios from "axios";
 import moment from "moment";
 import StationService from "@/components/Dashboard/StationService.vue";
-import StationIncident from "@/components/Incidents/StationIncident.vue";
+import DetailedIncident from "@/components/Incidents/DetailedIncident.vue";
 
 export default {
   name: "StationStatus",
@@ -79,7 +93,7 @@ export default {
    },
   components: {
     StationService,
-    StationIncident,
+    DetailedIncident,
   },
   data() {
     return {

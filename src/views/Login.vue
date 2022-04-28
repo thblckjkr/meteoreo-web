@@ -91,7 +91,7 @@ export default {
       if (!(username && password)) {
         return;
       }
-
+      
       this.loading = true;
       var s = new LoginService();
       s.login(username, password).then((response) => {

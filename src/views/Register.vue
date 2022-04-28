@@ -10,16 +10,16 @@ The form is made with Tailwind
 -->
 
 <template>
-  <div class="container mx-auto">
+  <div class="container mx-auto p-4">
     <div class="flex justify-center">
       <div class="w-full max-w-sm">
         <div
-          class="flex flex-col break-words bg-white border border-2 rounded shadow-md"
+          class="flex flex-col break-words bg-white border-2 rounded shadow-md py-4"
         >
-          <div class="bg-white text-primary py-3 px-6 mb-0">
+          <div class="bg-white text-primary text-xl pb-4 text-center mb-0">
             Registrar una nueva estacion
           </div>
-          <form class="w-full p-6" @submit.prevent="register">
+          <form class="w-full px-6" @submit.prevent="register">
             <div class="flex flex-wrap mb-6">
               <label
                 for="name"

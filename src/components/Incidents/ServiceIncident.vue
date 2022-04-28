@@ -9,7 +9,8 @@
     <div class="card-body">
       <p class="text-sm text-center text-gray-500">
          Encontrado: {{ incident.created_at | moment }} <br>
-         Actualizado: {{ incident.updated_at | moment }}
+         Actualizado: {{ incident.updated_at | moment }} <br>
+         Status: {{ incident.status }}
       </p>
 
       <div>

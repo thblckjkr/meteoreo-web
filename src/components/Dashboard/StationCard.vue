@@ -1,7 +1,7 @@
 <template>
   <!-- div class="overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-5 hover:shadow-2xl rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto" -->
   <div
-    class="container-card relative mb-4 mr-4 shadow-lg"
+    class="container-card relative mb-4 mr-4 pb-4 shadow-lg"
     v-bind:class="class_has_problems['border']"
   >
     <div
@@ -31,7 +31,7 @@
 
     <router-link
       v-bind:to="url"
-      class="outline-blue-button absolute bottom-3 right-3 left-auto"
+      class="outline-blue-button bg-white absolute bottom-3 right-3 left-auto"
       router-to=""
     >
       Ver

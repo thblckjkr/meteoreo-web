@@ -43,7 +43,7 @@
         v-for="incident in station.incidents"
         :key="incident"
       >
-        <DetailedIncident :incident="incident"></DetailedIncident>
+        <DetailedIncident :incident="incident" :station_id="uuid"></DetailedIncident>
       </div>
     </div>
 

@@ -1,24 +1,17 @@
 <template>
-  <div class="flex flex-1 overflow-y-auto p-4">
+  <div class="flex flex-1 overflow-y-auto p-6">
     <p class="text-2xl text-center"></p>
     <div class="flex flex-wrap">
-      <!--div class="info-card" v-for="(event, index) in events" :key="index" -->
-        <div
-          class="inline-flex m-3"
-          style="min-width: 10%"
-          v-for="event in events"
-          :key="event"
-        >
-          <StationIncident :incident="event" :actionable="false"></StationIncident>
-        </div>
+      <div class="w-full" v-for="event in events" :key="event.id">
+        <JournalIncident :incident="event" :actionable="false"></JournalIncident>
       </div>
-    <!--/div-->
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import StationIncident from "@/components/Incidents/StationIncident.vue";
+import JournalIncident from "@/components/Incidents/JournalIncident.vue";
 
 // Get's the events from the API, and sets the state
 export default {
@@ -28,7 +21,7 @@ export default {
     };
   },
   components: {
-    StationIncident,
+    JournalIncident,
   },
   beforeCreate() {
     this.$OneSignal.showSlidedownPrompt();

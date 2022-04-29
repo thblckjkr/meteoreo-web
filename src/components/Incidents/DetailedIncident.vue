@@ -42,14 +42,20 @@
             <div class="flex flex-wrap -mx-2">
               <div class="w-full md:w-1/2 px-2 mb-6 md:mb-0">
                 <p class="text-secondary">Salida:</p>
-                <p class="mb-4">{{ incident.data.stdout }}</p>
+                <code class="mb-4 whitespace-pre">{{ incident.data.stdout }}</code>
               </div>
               <div class="w-full md:w-1/2 px-2">
                 <p class="text-secondary">Error:</p>
-                <p class="mb-4">{{ incident.data.stderr }}</p>
+                <code class="mb-4 whitespace-pre">{{ incident.data.stderr }}</code>
               </div>
             </div>
           </div>
+
+          <SolveIncident
+            v-if="incident.data.command"
+            :path="incident.data.path"
+            :station_id="station_id"
+          />
 
       </div>
     </div>
@@ -59,6 +65,7 @@
 <script>
 // import VIcon from '../../components/VIcon.vue'
 import VIcon from "../Icons/VIcon.vue";
+import SolveIncident from "./SolveIncident.vue"
 import moment from "moment";
 
 export default {
@@ -67,9 +74,14 @@ export default {
       type: Object,
       required: true,
     },
+    station_id: {
+      type: String,
+      required: true,
+    }
   },
   components: {
     VIcon,
+    SolveIncident
   },
   filters: {
     moment: function(date) {

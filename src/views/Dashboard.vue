@@ -35,7 +35,8 @@ export default {
       return {
          stations: [],
          error: null,
-         loading: true
+         loading: true,
+         interval: null
       }
    },
    methods: {
@@ -54,10 +55,21 @@ export default {
       },
       async reload() {
          this.fetchStations();
+      },
+
+      cancelAutoUpdate () {
+         clearInterval(this.interval);
       }
    },
-   mounted() {
+   created() {
       this.fetchStations();
-   }   
+      // Reload the data every 10 minutes
+      this.interval = setInterval(() => {
+         this.reload();
+      }, 1000 * 60 * 10);
+   },
+   destroyed: function() {
+      this.cancelAutoUpdate();
+   }
 }
 </script>

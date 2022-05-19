@@ -20,9 +20,10 @@
       <div class="text-sm text-gray font-light mb-4 absolute top-4 right-4">
         Actualizado: {{ station.last_scan | moment }}
       </div>
+      <div class="flex flex-row flex-wrap">
 
       <div
-        class="inline-flex m-1"
+        class="m-1"
         style="min-width: 10%"
         v-for="service in station.services"
         :key="service"
@@ -32,6 +33,17 @@
           :incidents="station.incidents"
         ></StationService>
       </div>
+
+      <div
+        class="m-1"
+        >
+        <button class="outline-blue-button absolute bottom-3 right-3 left-auto" @click="refresh">
+          <i class="fas fa-sync-alt"></i>
+          Reescanear
+        </button> 
+      </div>
+      </div>
+
     </div>
 
     <div v-if="station.incidents.length > 0">

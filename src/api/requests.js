@@ -18,12 +18,25 @@ export class Requests {
       axios.defaults.baseURL = process.env.VUE_APP_HOST + '/api/v1';
       setAuthHeader();
    }
-   
+
    // Fetchs (via AXIOS GET) the stations, and returns promise resolved
    // or rejected with error message.
-   async getStations(){
+   async getStations() {
       return new Promise((resolve, reject) => {
          axios.get('/stations')
+            .then(response => {
+               resolve(response.data.stations);
+            })
+            .catch(error => {
+               reject(error);
+            });
+      });
+   }
+
+   // Rescans a given station.
+   async rescanStation(uuid) {
+      return new Promise((resolve, reject) => {
+         axios.post(`/stations/${uuid}/rescan`)
             .then(response => {
                resolve(response.data.stations);
             })
@@ -64,7 +77,7 @@ export class LoginService {
 
             console.log("returning user", user);
             Promise.resolve(user);
-         });         
+         });
    }
 
    logout() {
@@ -85,5 +98,5 @@ export class LoginService {
 
       // const error = (response && response.message) || response.statusText;
       // return Promise.reject(error);
-  }
+   }
 }

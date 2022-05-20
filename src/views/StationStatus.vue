@@ -35,12 +35,12 @@
       </div>
 
       <div
-        class="m-1"
+        class="m-1 overflow-auto"
         >
-        <button class="outline-blue-button absolute bottom-3 right-3 left-auto" @click="refresh">
-          <i class="fas fa-sync-alt"></i>
-          Reescanear
-        </button> 
+        <RescanButton 
+          :stationId="station.id"
+          :onComplete="refresh"
+          />
       </div>
       </div>
 
@@ -50,12 +50,11 @@
       <p class="text-center text-primary text-xl mb-3">Incidentes</p>
 
       <div
-        class="inline-flex m-1"
-        style="min-width: 10%"
+        class="flex m-1"
         v-for="incident in station.incidents"
         :key="incident"
       >
-        <DetailedIncident :incident="incident" :station_id="uuid"></DetailedIncident>
+        <GenericIncident :incident="incident" :actionable="true"></GenericIncident>
       </div>
     </div>
 
@@ -88,7 +87,10 @@
 import axios from "axios";
 import moment from "moment";
 import StationService from "@/components/Dashboard/StationService.vue";
-import DetailedIncident from "@/components/Incidents/DetailedIncident.vue";
+// import DetailedIncident from "@/components/Incidents/DetailedIncident.vue";
+import RescanButton from '../components/Buttons/RescanButton.vue'
+import GenericIncident from "@/components/Incidents/GenericIncident.vue";
+
 
 export default {
   name: "StationStatus",
@@ -105,7 +107,8 @@ export default {
    },
   components: {
     StationService,
-    DetailedIncident,
+    GenericIncident,
+    RescanButton,
   },
   data() {
     return {
@@ -139,6 +142,10 @@ export default {
           this.error = error;
           this.loading = false;
         });
+    },
+
+    refresh() {
+      this.getStation(this.uuid);
     },
     // TODO: Add network and drivers as services
   },

@@ -29,7 +29,7 @@ const service = new Requests();
 export default {
    components: {
       StationCard,
-      ErrorCard
+      ErrorCard,
    },
    data() {
       return {

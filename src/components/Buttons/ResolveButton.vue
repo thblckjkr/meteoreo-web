@@ -4,7 +4,7 @@
     :error="error"
     :onPress="rescan"
   >
-    Recargar
+    Resolver
   </ReactiveButton>
 </template>
 
@@ -18,7 +18,10 @@ export default {
       type: String,
       required: true,
     },
-
+    path: {
+      type: String,
+      required: true,
+    },
     onComplete: {
       type: Function,
       required: true,
@@ -43,7 +46,7 @@ export default {
       const service = new Requests();
 
       service
-        .rescanStation(this.stationId)
+        .fixStationEventByPath(this.stationId, this.path)
         .then(() => {
           this.onComplete();
         })

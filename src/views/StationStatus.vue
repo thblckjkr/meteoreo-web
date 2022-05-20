@@ -9,11 +9,13 @@
 
       <div class="text-sm text-gray font-light mb-4">
         <div class="my-2 inline">
-          <b>IP:</b> <span class="text-secondary">{{ station.ip_address }}</span>
+          <b>IP:</b>
+          <span class="text-secondary">{{ station.ip_address }}</span>
         </div>
-        
+
         <div class="m-2 inline">
-          <b>Driver:</b> <span class="text-secondary">{{ station.driver }}</span>
+          <b>Driver:</b>
+          <span class="text-secondary">{{ station.driver }}</span>
         </div>
       </div>
 
@@ -21,29 +23,22 @@
         Actualizado: {{ station.last_scan | moment }}
       </div>
       <div class="flex flex-row flex-wrap">
-
-      <div
-        class="m-1"
-        style="min-width: 10%"
-        v-for="service in station.services"
-        :key="service"
-      >
-        <StationService
-          :service="service"
-          :incidents="station.incidents"
-        ></StationService>
-      </div>
-
-      <div
-        class="m-1 overflow-auto"
+        <div
+          class="m-1"
+          style="min-width: 10%"
+          v-for="service in station.services"
+          :key="service"
         >
-        <RescanButton 
-          :stationId="station.id"
-          :onComplete="refresh"
-          />
-      </div>
-      </div>
+          <StationService
+            :service="service"
+            :incidents="station.incidents"
+          ></StationService>
+        </div>
 
+        <div class="m-1 overflow-auto">
+          <RescanButton :stationId="station.id" :onComplete="refresh" />
+        </div>
+      </div>
     </div>
 
     <div v-if="station.incidents.length > 0">
@@ -54,7 +49,12 @@
         v-for="incident in station.incidents"
         :key="incident"
       >
-        <GenericIncident :incident="incident" :actionable="true"></GenericIncident>
+        <GenericIncident
+          :incident="incident"
+          :actionable="true"
+          :rescanCallback="refresh"
+          :stationId="station.id"
+        ></GenericIncident>
       </div>
     </div>
 
@@ -70,7 +70,6 @@
         <StationIncident :incident="incident"></StationIncident>
       </div>
     </div> -->
-
   </div>
 </template>
 
@@ -88,9 +87,8 @@ import axios from "axios";
 import moment from "moment";
 import StationService from "@/components/Dashboard/StationService.vue";
 // import DetailedIncident from "@/components/Incidents/DetailedIncident.vue";
-import RescanButton from '../components/Buttons/RescanButton.vue'
+import RescanButton from "../components/Buttons/RescanButton.vue";
 import GenericIncident from "@/components/Incidents/GenericIncident.vue";
-
 
 export default {
   name: "StationStatus",
@@ -101,10 +99,10 @@ export default {
     },
   },
   filters: {
-      moment: function (date) {
-         return moment(date).format('YYYY-MM-DD HH:mm:ss');
-      },
-   },
+    moment: function(date) {
+      return moment(date).format("YYYY-MM-DD HH:mm:ss");
+    },
+  },
   components: {
     StationService,
     GenericIncident,

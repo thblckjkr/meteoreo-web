@@ -24,8 +24,16 @@
    .outline-blue-button {
       @apply outline-button hover:bg-blue text-blue border-blue hover:text-white
    }
+   .outline-gray-button {
+      @apply outline-button hover:bg-gray-200 text-gray-800 border-gray-200 hover:text-gray-800
+   }
    .outline-green-button {
       @apply outline-button hover:bg-green text-green border-green hover:text-white
    }
-
+   .outline-yellow-button {
+      @apply outline-button hover:bg-yellow-300 text-yellow-600 border-yellow-300 hover:text-white
+   }
+   .outline-red-button {
+      @apply outline-button hover:bg-red-500 text-red-800 border-red-500 hover:text-white
+   }
 }

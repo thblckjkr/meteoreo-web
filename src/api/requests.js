@@ -45,6 +45,22 @@ export class Requests {
             });
       });
    }
+
+   async fixStationEventByPath(uuid, path) {
+      return new Promise((resolve, reject) => {
+         axios.post(`/stations/${uuid}/solve`, null, {
+               params: {
+                  incident_path: path,
+               }
+            })
+            .then(response => {
+               resolve(response.data.stations);
+            })
+            .catch(error => {
+               reject(error);
+            });
+      });
+   }
 }
 
 export class LoginService {

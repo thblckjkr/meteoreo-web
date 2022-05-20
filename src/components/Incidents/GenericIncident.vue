@@ -1,5 +1,7 @@
 <template>
-  <div class="container-card incident-card mx-auto w-full mb-6 p-4 block relative">
+  <div
+    class="container-card incident-card mx-auto w-full mb-6 p-4 block relative"
+  >
     <div class="card">
       <div class="card-header flex flex-row flex-wrap place-content-between">
         <div>
@@ -46,23 +48,26 @@
         <p class="mb-4">{{ incident.data.command }}</p>
       </div>
 
-      <div v-if="incident.data.stdout || incident.data.stderr" class="basis-100">
+      <div
+        v-if="incident.data.stdout || incident.data.stderr"
+        class="basis-100"
+      >
         <div class="w-full">
           <p class="text-secondary">Salida:</p>
-          <code class="mb-4 whitespace-pre">{{ incident.data.stdout }}</code> 
-          <br>
-          <code class="mb-4 whitespace-pre text-red-800">{{ incident.data.stderr }}</code>
+          <code class="mb-4 whitespace-pre">{{ incident.data.stdout }}</code>
+          <br />
+          <code class="mb-4 whitespace-pre text-red-800">{{
+            incident.data.stderr
+          }}</code>
         </div>
       </div>
 
       <div
         class="border-t mt-4 pt-4"
-       v-if="incident.solutions && incident.solutions.length > 0"
+        v-if="incident.solutions && incident.solutions.length > 0"
       >
         <div class="" v-for="solution in incident.solutions" :key="solution.id">
-          <div>
-            Comentario por: {{ solution.solved_by }}
-          </div>
+          <div>Comentario por: {{ solution.solved_by }}</div>
           <div>
             {{ solution.solution }}
           </div>
@@ -71,20 +76,28 @@
           </div>
         </div>
       </div>
-
     </div>
-    <ResolveButton :incident="incident" v-if="actionable"> </ResolveButton>
+    <ResolveButton :path="incident.data.path" :stationId="stationId" :onComplete="rescanCallback" />
   </div>
 </template>
 
 <script>
 import moment from "moment";
+import ResolveButton from "../Buttons/ResolveButton.vue";
 
 export default {
   name: "StationIncident",
   props: {
+    stationId: {
+      type: String,
+      required: true
+    },
     incident: {
       type: Object,
+      required: true,
+    },
+    rescanCallback: {
+      type: Function,
       required: true,
     },
     actionable: {
@@ -98,10 +111,14 @@ export default {
       format_moment: true,
     };
   },
-  components: {},
+  components: {
+    ResolveButton,
+  },
   filters: {
-    moment: function (date, format_moment) {
-      return format_moment ? moment.utc(date).calendar() : moment.utc(date).format("LLL");
+    moment: function(date, format_moment) {
+      return format_moment
+        ? moment.utc(date).calendar()
+        : moment.utc(date).format("LLL");
     },
   },
   computed: {

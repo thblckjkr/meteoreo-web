@@ -4,7 +4,7 @@
     :error="error"
     :onPress="rescan"
   >
-    Recargar
+    Reescanear
   </ReactiveButton>
 </template>
 
